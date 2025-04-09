@@ -116,9 +116,12 @@ public class App {
 
 
     public static List<Review> filterByPriceRange(List<Review> reviews, double min, double max) {
-        //TODO - you need to implement this using a functional approach!
-        return null;
-    }
+    // TODO - you need to implement this using a functional approach!
+    reviews.stream()
+            .filter(r -> r.getPrice() >= min && r.getPrice() <= max) 
+            .collect(Collectors.toList());                          
+    return null;
+}
 
     public static Map<String, Long> countByProductId(List<Review> reviews) {
         return reviews.stream()
