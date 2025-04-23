@@ -153,8 +153,11 @@ public class App {
 
 
     public static List<String> getHomeProductIdsUnder100(List<Review> reviews) {
-        //TODO - you need to implement this using a functional approach!
-        return new ArrayList<String>();                             // Final list of productIds
+        return reviews.stream()
+                .filter(r -> "Home".equalsIgnoreCase(r.getCategory())) 
+                .filter(r -> r.getPrice() < 100)                      
+                .map(Review::getProductId)                            
+                .collect(Collectors.toList());                        
     }
 
     
